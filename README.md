@@ -1,70 +1,116 @@
-To-Do List App with React
+# To-Do List App with React
 
-Overview
+## Overview
 
-This is a very simple To-Do app made with React covering very basic concepts of React.
+This is a simple To-Do app built with React, covering basic fundamental concepts.
 
-Features:
-• Add tasks
-• Mark tasks as done
-• Delete tasks
+### Features
 
-Topics Covered:
-• Components
-• useState hook
-• Event handling
-• Rendering lists with map()
-• Conditional rendering
+* Add tasks
+* Mark tasks as done
+* Delete tasks
 
-Part 1: Scaffold React App
+### Topics Covered
 
-1. Open terminal (Either in your computer or in Visual Studio Code)
-2. Navigate to the folder you want this project to be in
-3. Run
-   a. npx create-react-app todo-app
-   b. cd todo-app
-   c. npm start
-4. It should open your browser and run on http://localhost:3000
+* React components
+* `useState` hook
+* Event handling
+* Rendering lists with `map()`
+* Conditional rendering
 
-Part 2: Clean up default code
+---
 
-1. Open src/App.js
-2. Remove everything inside "<div className="App">" and write "<h1>To Do List in React</h1>"
+# Part 1: Scaffold React App
 
-Part 3: Create State for tasks
+1. Open your terminal (system terminal or VS Code terminal).
+2. Navigate to the folder where you want the project.
+3. Run:
 
-1. Import useState at the top
-    import { useState } from "react";
+```
+npx create-react-app todo-app
+cd todo-app
+npm start
+```
 
-2. Inside App() before the return(), add a state for tasks
-    const [tasks, setTasks] = useState([]);
-    const [input, setInput] = useState("");
+4. Your browser should automatically open at:
 
-Part 4: Add Input and Button
+```
+http://localhost:3000
+```
 
-1. Below "<h1>", add an input and button
-   <input
-   type="text"
-   value={input}
-   onChange={(e) => setInput(e.target.value)}
-   placeholder="Enter a task"
-   />
-   <button onClick={addTask}>Add task</button>
+---
 
-Part 5: Create a function called addTask
+# Part 2: Clean Up Default Code
 
-1. Inside App() before the return(), add
+1. Open `src/App.js`.
+2. Remove everything **inside**:
 
-   const addTask = () => {
-   if (input.trim() !== ""){
-   setTasks([...tasks, { text: input, completed: false }]);
-   setInput("");
-   }
-   };
+```
+<div className="App">
+```
 
-Part 6: Display the tasks
+3. Replace it with:
 
-1. Below the button, add this to render the tasks as a list
+```
+<h1>To Do List in React</h1>
+```
+
+---
+
+# Part 3: Create State for Tasks
+
+1. At the top of the file, import `useState`:
+
+```
+import { useState } from "react";
+```
+
+2. Inside `App()`, **before** the `return`, add:
+
+```
+const [tasks, setTasks] = useState([]);
+const [input, setInput] = useState("");
+```
+
+---
+
+# Part 4: Add Input and Button
+
+Below the `<h1>`, add:
+
+```
+<input
+  type="text"
+  value={input}
+  onChange={(e) => setInput(e.target.value)}
+  placeholder="Enter a task"
+/>
+
+<button onClick={addTask}>Add task</button>
+```
+
+---
+
+# Part 5: Create `addTask` Function
+
+Inside `App()`, before the `return`, add:
+
+```
+const addTask = () => {
+  if (input.trim() !== "") {
+    setTasks([...tasks, { text: input, completed: false }]);
+    setInput("");
+  }
+};
+```
+
+---
+
+# Part 6: Display the Tasks
+
+Below the button, add:
+
+```
 <ul>
   {tasks.map((task, index) => (
     <li key={index}>
@@ -75,22 +121,35 @@ Part 6: Display the tasks
       >
         {task.text}
       </span>
+
       <button onClick={() => toggleTask(index)}>Done</button>
       <button onClick={() => deleteTask(index)}>Delete</button>
     </li>
   ))}
 </ul>
+```
 
-Part 7: Add toggleTask and deleteTask
+---
 
-1. Inside App() before the return(), add
+# Part 7: Add `toggleTask` and `deleteTask`
 
+Before the `return`, add:
+
+```
 const toggleTask = (index) => {
-const newTasks = [...tasks];
-newTasks[index].completed = !newTasks[index].completed;
-setTasks(newTasks);
+  const newTasks = [...tasks];
+  newTasks[index].completed = !newTasks[index].completed;
+  setTasks(newTasks);
 };
+
 const deleteTask = (index) => {
-const newTasks = tasks.filter((_, i) => i !== index);
-setTasks(newTasks);
+  const newTasks = tasks.filter((_, i) => i !== index);
+  setTasks(newTasks);
 };
+```
+
+---
+
+# Done!
+
+Your To-Do List app is complete.
