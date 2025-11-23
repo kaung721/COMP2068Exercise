@@ -1,10 +1,14 @@
 To-Do List App with React
+
 Overview
+
 This is a very simple To-Do app made with React covering very basic concepts of React.
+
 Features:
 • Add tasks
 • Mark tasks as done
 • Delete tasks
+
 Topics Covered:
 • Components
 • useState hook
@@ -25,19 +29,20 @@ Part 1: Scaffold React App
 Part 2: Clean up default code
 
 1. Open src/App.js
-2. Remove everything inside <div className="App"> and write <h1>To Do List in React</h1>
+2. Remove everything inside "<div className="App">" and write "<h1>To Do List in React</h1>"
 
 Part 3: Create State for tasks
 
 1. Import useState at the top
-   • import { useState } from "react";
-2. Inside App() before the return() before the return() before the return(), add a state for tasks
-   • const [tasks, setTasks] = useState([]);
-   • const [input, setInput] = useState("");
+    import { useState } from "react";
+
+2. Inside App() before the return(), add a state for tasks
+    const [tasks, setTasks] = useState([]);
+    const [input, setInput] = useState("");
 
 Part 4: Add Input and Button
 
-1. Below <h1>, add an input and button
+1. Below "<h1>", add an input and button
    <input
    type="text"
    value={input}
@@ -48,7 +53,7 @@ Part 4: Add Input and Button
 
 Part 5: Create a function called addTask
 
-1. Inside App() before the return() before the return(), add
+1. Inside App() before the return(), add
 
    const addTask = () => {
    if (input.trim() !== ""){
