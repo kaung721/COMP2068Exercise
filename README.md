@@ -16,7 +16,6 @@ This is a simple To-Do app built with React, covering basic fundamental concepts
 * `useState` hook
 * Event handling
 * Rendering lists with `map()`
-* Conditional rendering
 
 ---
 
@@ -43,13 +42,19 @@ http://localhost:3000
 # Part 2: Clean Up Default Code
 
 1. Open `src/App.js`.
-2. Remove everything **inside**:
+2. Remove 
+
+```
+import logo from './logo.svg';
+```
+
+3. Remove everything **inside**:
 
 ```
 <div className="App">
 ```
 
-3. Replace it with:
+4. Replace it with:
 
 ```
 <h1>To Do List in React</h1>
@@ -74,24 +79,7 @@ const [input, setInput] = useState("");
 
 ---
 
-# Part 4: Add Input and Button
-
-Below the `<h1>`, add:
-
-```
-<input
-  type="text"
-  value={input}
-  onChange={(e) => setInput(e.target.value)}
-  placeholder="Enter a task"
-/>
-
-<button onClick={addTask}>Add task</button>
-```
-
----
-
-# Part 5: Create `addTask` Function
+# Part 4: Create `addTask` Function
 
 Inside `App()`, before the `return`, add:
 
@@ -106,7 +94,43 @@ const addTask = () => {
 
 ---
 
-# Part 6: Display the Tasks
+# Part 5: Add Input and Button
+
+Below the `<h1>`, add:
+
+```
+<input
+  type="text"
+  value={input}
+  onChange={(e) => setInput(e.target.value)}
+  placeholder="Enter a task"
+/>
+<button onClick={addTask}>Add task</button>
+```
+
+---
+
+
+# Part 6: Add `toggleTask` and `deleteTask`
+
+Before the `return`, add:
+
+```
+const toggleTask = (index) => {
+  const newTasks = [...tasks];
+  newTasks[index].completed = !newTasks[index].completed;
+  setTasks(newTasks);
+};
+
+const deleteTask = (index) => {
+  const newTasks = tasks.filter((_, i) => i !== index);
+  setTasks(newTasks);
+};
+```
+
+---
+
+# Part 7: Display the Tasks
 
 Below the button, add:
 
@@ -131,21 +155,3 @@ Below the button, add:
 
 ---
 
-# Part 7: Add `toggleTask` and `deleteTask`
-
-Before the `return`, add:
-
-```
-const toggleTask = (index) => {
-  const newTasks = [...tasks];
-  newTasks[index].completed = !newTasks[index].completed;
-  setTasks(newTasks);
-};
-
-const deleteTask = (index) => {
-  const newTasks = tasks.filter((_, i) => i !== index);
-  setTasks(newTasks);
-};
-```
-
----
