@@ -149,7 +149,3 @@ const deleteTask = (index) => {
 ```
 
 ---
-
-# Done!
-
-Your To-Do List app is complete.
